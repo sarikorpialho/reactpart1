@@ -5,7 +5,7 @@ const Header = (props) => {
   
   return (
     <div>
-      <h1>{props.title}</h1>
+      <h1>{props.course.title}</h1>
     </div>
     )
 }
@@ -26,33 +26,53 @@ const Contents = (props) => {
     )
 } 
 
+const Count = ({parts}) => {
+  return(
+    <div>
+      <p>Total: {parts.reduce((sum,part) => sum+part.exercises,0)} exercises</p>
+      </div>
+  
+  )
+}
+
+const Course = (props) => {
+  return (
+    <div>
+      <Header course = {props.course}/> 
+      <Contents parts = {props.course.parts}/>
+      <Count parts = {props.course.parts} />
+    </div>
+  )
+}
+
 
  
 
 const App = () => {
-  const course = 'Superadvanced web and mobile programming'
-  const parts = [
-    {
-      id: 1,
-      name: 'Basics of React',
-      exercises: 8
-    },
-    {
-      id: 2,
-      name: 'Using props',
-      exercises: 10
-    },
-    {
-      id: 3,
-      name: 'Component states',
-      exercises: 12
-    }
-  ]
-
+  const course = {
+    title: 'Superadvanced web and mobile programming',
+    parts: [
+      {
+        id: 1,
+        name: 'Basics of React',
+        exercises: 8
+      },
+      {
+        id: 2,
+        name: 'Using props',
+        exercises: 10
+      },
+      {
+        id: 3,
+        name: 'Component states',
+        exercises: 12
+      }
+    ]
+  }
   return (
     <div>
-      <Header title = {course}/> 
-      <Contents parts = {parts}/>
+      <Course course = {course} />
+      
     </div>
   )
 }
