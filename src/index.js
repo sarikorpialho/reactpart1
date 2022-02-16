@@ -29,7 +29,7 @@ const Contents = (props) => {
 const Count = ({parts}) => {
   return(
     <div>
-      <p>Total: {parts.reduce((sum,part) => sum+part.exercises,0)} exercises</p>
+      <p>Total: {parts.reduce((sum,part) => sum+part.exercises,0)} </p>
       </div>
   
   )
